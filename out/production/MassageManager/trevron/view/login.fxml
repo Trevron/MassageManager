@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.image.Image?>
+<GridPane xmlns="http://javafx.com/javafx"
+          xmlns:fx="http://javafx.com/fxml"
+          fx:controller="trevron.controller.LoginController"
+          prefHeight="720.0" prefWidth="1280.0"
+          alignment="CENTER_RIGHT" hgap="10" vgap="10" stylesheets="@style.css"
+          styleClass="default" id="pane" >
+
+
+    <fx:define>
+        <Image fx:id="userImage" url="@../res/user_small.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="passwordImage" url="@../res/lock_small.png" />
+    </fx:define>
+
+    <Label fx:id="userLabel" GridPane.columnIndex="0" GridPane.rowIndex="0" styleClass="label">
+        <graphic>
+            <ImageView image="$userImage" />
+        </graphic>
+    </Label>
+    <Label fx:id="passwordLabel" GridPane.columnIndex="0" GridPane.rowIndex="1" styleClass="label">
+        <graphic>
+            <ImageView image="$passwordImage" />
+        </graphic>
+    </Label>
+    <TextField fx:id="loginUsername" GridPane.columnIndex="1" GridPane.rowIndex="0"
+               onKeyReleased="#handleKeyReleased" onKeyPressed="#handleKeyPressed" styleClass="textField">
+        <GridPane.margin>
+            <Insets right="200"/>
+        </GridPane.margin>
+    </TextField>
+    <PasswordField fx:id="loginPassword" GridPane.columnIndex="1" GridPane.rowIndex="1"
+                   onKeyReleased="#handleKeyReleased" onKeyPressed="#handleKeyPressed" styleClass="textField">
+        <GridPane.margin>
+            <Insets right="200"/>
+        </GridPane.margin>
+    </PasswordField>
+    <Button fx:id="loginButton" text="Login" GridPane.columnIndex="0" GridPane.rowIndex="3" GridPane.columnSpan="2"
+            minWidth="250" onAction="#handleLoginButton" styleClass="button" id="shiny-orange">
+        <GridPane.margin>
+            <Insets right="200"/>
+        </GridPane.margin>
+    </Button>
+
+</GridPane>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="trevron.controller.AppointmentController"
+            prefHeight="720.0" prefWidth="1280.0" stylesheets="@style.css" styleClass="dashboard-default">
+
+    <!--Define Images for sidebar icons-->
+    <fx:define>
+        <Image fx:id="homeImage" url="@../res/home.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="customerImage" url="@../res/users.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="appointmentImage" url="@../res/calendar.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="reportImage" url="@../res/clipboard.png" />
+    </fx:define>
+
+    <left>
+        <VBox id="dashboard-sidebar" spacing="10" alignment="TOP_CENTER" styleClass="leftPane" minWidth="100" maxWidth="100">
+            <padding>
+                <Insets top="10" bottom="10" right="10" left="10"/>
+            </padding>
+
+            <Button fx:id="homeButton" id="button-sidebar" prefWidth="60" prefHeight="60" onAction="#handleHomeButton">
+                <graphic>
+                    <ImageView image="$homeImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar" prefWidth="60" prefHeight="60" onAction="#handleCustomerButton">
+                <graphic>
+                    <ImageView image="$customerImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar-current" prefWidth="60" prefHeight="60">
+                <graphic>
+                    <ImageView image="$appointmentImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar" prefWidth="60" prefHeight="60" onAction="#handleReportButton">
+                <graphic>
+                    <ImageView image="$reportImage" />
+                </graphic>
+            </Button>
+
+        </VBox>
+    </left>
+
+    <center>
+        <VBox styleClass="dashboard-center">
+
+        </VBox>
+    </center>
+
+</BorderPane>

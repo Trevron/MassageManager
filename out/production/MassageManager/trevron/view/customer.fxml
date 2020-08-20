@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="trevron.controller.CustomerController"
+            prefHeight="720.0" prefWidth="1280.0" stylesheets="@style.css" styleClass="dashboard-default">
+
+    <!--Define Images for sidebar icons-->
+    <fx:define>
+        <Image fx:id="homeImage" url="@../res/home.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="customerImage" url="@../res/users.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="appointmentImage" url="@../res/calendar.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="reportImage" url="@../res/clipboard.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="addCustomerImage" url="@../res/user-plus.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="deleteCustomerImage" url="@../res/user-minus.png" />
+    </fx:define>
+
+    <left>
+        <VBox id="dashboard-sidebar" spacing="10" alignment="TOP_CENTER" styleClass="leftPane" minWidth="100" maxWidth="100">
+            <padding>
+                <Insets top="10" bottom="10" right="10" left="10"/>
+            </padding>
+
+            <Button fx:id="homeButton" id="button-sidebar" prefWidth="60" prefHeight="60" onAction="#handleHomeButton">
+                <graphic>
+                    <ImageView image="$homeImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar-current" prefWidth="60" prefHeight="60">
+                <graphic>
+                    <ImageView image="$customerImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar" prefWidth="60" prefHeight="60" onAction="#handleAppointmentButton">
+                <graphic>
+                    <ImageView image="$appointmentImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar" prefWidth="60" prefHeight="60" onAction="#handleReportButton">
+                <graphic>
+                    <ImageView image="$reportImage" />
+                </graphic>
+            </Button>
+
+        </VBox>
+    </left>
+
+    <center>
+        <VBox styleClass="dashboard-center">
+            <TableView fx:id="customerTableView" minWidth="1080" minHeight="720">
+                <columns>
+                    <TableColumn fx:id="nameColumn" text="Name" styleClass="column" prefWidth="200"/>
+                    <TableColumn fx:id="addressColumn" text="Address" styleClass="column" prefWidth="200"/>
+                    <TableColumn fx:id="address2Column" text="Address2" styleClass="column" prefWidth="200"/>
+                    <TableColumn fx:id="cityColumn" text="City" styleClass="column" prefWidth="100"/>
+                    <TableColumn fx:id="zipcodeColumn" text="Postal" styleClass="column" prefWidth="100"/>
+                    <TableColumn fx:id="countryColumn" text="Country" styleClass="column" prefWidth="100"/>
+                    <TableColumn fx:id="phoneColumn" text="Phone" styleClass="column" prefWidth="180"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <right>
+        <VBox id="dashboard-sidebar" spacing="10" alignment="TOP_CENTER" minWidth="100" maxWidth="100">
+            <padding>
+                <Insets top="10" bottom="10" right="10" left="10"/>
+            </padding>
+
+
+            <Button id="button-sidebar" prefWidth="60" prefHeight="60">
+                <graphic>
+                    <ImageView image="$addCustomerImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar" prefWidth="60" prefHeight="60">
+                <graphic>
+                    <ImageView image="$deleteCustomerImage" />
+                </graphic>
+            </Button>
+
+        </VBox>
+    </right>
+
+</BorderPane>

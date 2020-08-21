@@ -7,16 +7,16 @@ import java.sql.SQLException;
 import java.time.LocalDateTime;
 
 public class Appointment {
-    private int appointmentId, customerId, userId, cost;
+    private int appointmentID, customerID, userID, cost;
     private String title, description, contact, type, customerName;
     private LocalDateTime start, end;
 
 
 
-    public Appointment(int appointmentId, int customerId, int userId, String title, String description, String contact, String type, LocalDateTime start, LocalDateTime end, int cost) {
-        this.appointmentId = appointmentId;
-        this.customerId = customerId;
-        this.userId = userId;
+    public Appointment(int appointmentID, int customerID, int userID, String title, String description, String contact, String type, LocalDateTime start, LocalDateTime end, int cost) {
+        this.appointmentID = appointmentID;
+        this.customerID = customerID;
+        this.userID = userID;
         this.title = title;
         this.description = description;
         this.contact = contact;
@@ -26,28 +26,28 @@ public class Appointment {
         this.cost = cost;
     }
 
-    public int getAppointmentId() {
-        return appointmentId;
+    public int getAppointmentID() {
+        return appointmentID;
     }
 
-    public void setAppointmentId(int appointmentId) {
-        this.appointmentId = appointmentId;
+    public void setAppointmentID(int appointmentID) {
+        this.appointmentID = appointmentID;
     }
 
-    public int getCustomerId() {
-        return customerId;
+    public int getCustomerID() {
+        return customerID;
     }
 
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
+    public void setCustomerID(int customerID) {
+        this.customerID = customerID;
     }
 
-    public int getUserId() {
-        return userId;
+    public int getUserID() {
+        return userID;
     }
 
-    public void setUserId(int userId) {
-        this.userId = userId;
+    public void setUserID(int userID) {
+        this.userID = userID;
     }
 
     public String getTitle() {
@@ -108,7 +108,7 @@ public class Appointment {
     // This method uses a sql query to return the customer's name using the customerId.
     // It allows the appointment table view to have a Name column using property value factories.
     public String getCustomerName() {
-        String sql = "SELECT customerName FROM customer where customerId = " + customerId;
+        String sql = "SELECT customerName FROM customer where customerId = " + customerID;
         Query.executeQuery(sql);
         ResultSet result = Query.getResult();
         try {

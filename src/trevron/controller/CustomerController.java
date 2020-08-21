@@ -165,8 +165,11 @@ public class CustomerController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Initialize columns and table data
+        // Disable buttons
         deleteCustomerButton.setDisable(true);
+        editCustomerButton.setDisable(true);
+        
+        // Initialize columns and table data
         updateTableData();
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));

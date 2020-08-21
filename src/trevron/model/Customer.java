@@ -2,9 +2,9 @@ package trevron.model;
 
 public class Customer {
 
-    String customerID, name, addressID, address, address2, postalCode, phone, city, cityId, country, countryId;
+    String customerID, name, addressID, address, address2, postalCode, phone, city, cityID, country, countryID;
 
-    public Customer(String customerID, String name, String addressID, String address, String address2, String postalCode, String phone, String city, String cityId, String country, String countryId) {
+    public Customer(String customerID, String name, String addressID, String address, String address2, String postalCode, String phone, String city, String cityID, String country, String countryID) {
         this.customerID = customerID;
         this.name = name;
         this.addressID = addressID;
@@ -13,9 +13,9 @@ public class Customer {
         this.postalCode = postalCode;
         this.phone = phone;
         this.city = city;
-        this.cityId = cityId;
+        this.cityID = cityID;
         this.country = country;
-        this.countryId = countryId;
+        this.countryID = countryID;
     }
 
 
@@ -83,12 +83,12 @@ public class Customer {
         this.city = city;
     }
 
-    public String getCityId() {
-        return cityId;
+    public String getCityID() {
+        return cityID;
     }
 
-    public void setCityId(String cityId) {
-        this.cityId = cityId;
+    public void setCityID(String cityID) {
+        this.cityID = cityID;
     }
 
     public String getCountry() {
@@ -99,11 +99,11 @@ public class Customer {
         this.country = country;
     }
 
-    public String getCountryId() {
-        return countryId;
+    public String getCountryID() {
+        return countryID;
     }
 
-    public void setCountryId(String countryId) {
-        this.countryId = countryId;
+    public void setCountryID(String countryID) {
+        this.countryID = countryID;
     }
 }

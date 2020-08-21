@@ -43,6 +43,10 @@
         <Image fx:id="editCustomerImage" url="@../res/edit.png" />
     </fx:define>
 
+    <fx:define>
+        <Image fx:id="searchImage" url="@../res/search-small.png" />
+    </fx:define>
+
     <left>
         <VBox id="dashboard-sidebar" spacing="10" alignment="TOP_CENTER" styleClass="leftPane" minWidth="100" maxWidth="100">
             <padding>
@@ -77,7 +81,15 @@
     </left>
 
     <center>
-        <VBox styleClass="dashboard-center">
+        <VBox styleClass="dashboard-center" >
+            <HBox alignment="CENTER_RIGHT">
+                <Button id="button-sidebar" prefWidth="28" prefHeight="28">
+                    <graphic>
+                        <ImageView image="$searchImage" />
+                    </graphic>
+                </Button>
+                <TextField fx:id="searchField" styleClass="searchField" />
+            </HBox>
             <TableView fx:id="customerTableView" minWidth="1080" minHeight="720" onMouseClicked="#checkSelected">
                 <columns>
                     <TableColumn fx:id="nameColumn" text="Name" styleClass="column" prefWidth="200"/>

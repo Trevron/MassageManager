@@ -39,6 +39,10 @@
         <Image fx:id="deleteCustomerImage" url="@../res/user-minus.png" />
     </fx:define>
 
+    <fx:define>
+        <Image fx:id="editCustomerImage" url="@../res/edit.png" />
+    </fx:define>
+
     <left>
         <VBox id="dashboard-sidebar" spacing="10" alignment="TOP_CENTER" styleClass="leftPane" minWidth="100" maxWidth="100">
             <padding>
@@ -104,6 +108,12 @@
             <Button id="button-sidebar" fx:id="deleteCustomerButton" prefWidth="60" prefHeight="60" onAction="#deleteButtonHandler" disable="true">
                 <graphic>
                     <ImageView image="$deleteCustomerImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar" fx:id="editCustomerButton" prefWidth="60" prefHeight="60" onAction="#updateButtonHandler" disable="true">
+                <graphic>
+                    <ImageView image="$editCustomerImage" />
                 </graphic>
             </Button>
 

@@ -35,6 +35,7 @@ public class CustomerController implements Initializable {
     @FXML private TableColumn<Customer, String> countryColumn;
     @FXML private TableColumn<Customer, String> phoneColumn;
     @FXML Button deleteCustomerButton;
+    @FXML Button editCustomerButton;
     @FXML Button homeButton;
     State state = State.getInstance();
     Stage stage;
@@ -73,8 +74,10 @@ public class CustomerController implements Initializable {
     public void checkSelected() {
         if (customerTableView.getSelectionModel().getSelectedItem() != null) {
             deleteCustomerButton.setDisable(false);
+            editCustomerButton.setDisable(false);
         } else {
             deleteCustomerButton.setDisable(true);
+            editCustomerButton.setDisable(true);
         }
     }
 

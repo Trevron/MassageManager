@@ -66,7 +66,7 @@
 }
 
 #button-sidebar {
-    -fx-background-color: #141E26;
+    -fx-background-color: transparent;
     -fx-background-radius: 10;
 }
 
@@ -76,7 +76,7 @@
 }
 
 #button-sidebar:pressed {
-    -fx-background-color: #243540;
+    -fx-background-color: #193035;
     -fx-background-radius: 20;
 }
 

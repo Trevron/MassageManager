@@ -74,7 +74,7 @@
 
     <center>
         <VBox styleClass="dashboard-center">
-            <TableView fx:id="customerTableView" minWidth="1080" minHeight="720">
+            <TableView fx:id="customerTableView" minWidth="1080" minHeight="720" onMouseClicked="#checkSelected">
                 <columns>
                     <TableColumn fx:id="nameColumn" text="Name" styleClass="column" prefWidth="200"/>
                     <TableColumn fx:id="addressColumn" text="Address" styleClass="column" prefWidth="200"/>
@@ -101,7 +101,7 @@
                 </graphic>
             </Button>
 
-            <Button id="button-sidebar" prefWidth="60" prefHeight="60">
+            <Button id="button-sidebar" fx:id="deleteCustomerButton" prefWidth="60" prefHeight="60" onAction="#deleteButtonHandler" disable="true">
                 <graphic>
                     <ImageView image="$deleteCustomerImage" />
                 </graphic>

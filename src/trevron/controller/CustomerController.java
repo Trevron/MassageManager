@@ -34,7 +34,7 @@ public class CustomerController implements Initializable {
     @FXML private TableColumn<Customer, String> zipcodeColumn;
     @FXML private TableColumn<Customer, String> countryColumn;
     @FXML private TableColumn<Customer, String> phoneColumn;
-
+    @FXML Button deleteCustomerButton;
     @FXML Button homeButton;
     State state = State.getInstance();
     Stage stage;
@@ -67,6 +67,15 @@ public class CustomerController implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    // Enable or disable customer buttons if row is selected
+    public void checkSelected() {
+        if (customerTableView.getSelectionModel().getSelectedItem() != null) {
+            deleteCustomerButton.setDisable(false);
+        } else {
+            deleteCustomerButton.setDisable(true);
+        }
     }
 
     // Update the selected customer.
@@ -154,6 +163,7 @@ public class CustomerController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         // Initialize columns and table data
+        deleteCustomerButton.setDisable(true);
         updateTableData();
         nameColumn.setCellValueFactory(new PropertyValueFactory<>("name"));
         addressColumn.setCellValueFactory(new PropertyValueFactory<>("address"));

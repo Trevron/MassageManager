@@ -20,7 +20,6 @@ public class DBConnection {
         Class.forName(driver);
         conn = (Connection) DriverManager.getConnection(dbURL, dbUserName, dbPassword);
         System.out.println("Connection successful!");
-
     }
 
     public static void closeConnection() throws ClassNotFoundException, SQLException, Exception {

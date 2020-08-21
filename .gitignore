@@ -1,3 +1,9 @@
 /src/trevron/utility/Config.java
 out/production/MassageManager/trevron/utility/Config.class
 logfile.txt
+out/
+.idea/
+.idea_modules/
+*.iml
+*.ipr
+*.iws

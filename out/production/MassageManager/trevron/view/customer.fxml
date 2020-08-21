@@ -99,7 +99,7 @@
             </padding>
 
 
-            <Button id="button-sidebar" prefWidth="60" prefHeight="60">
+            <Button id="button-sidebar" prefWidth="60" prefHeight="60" onAction="#handleAddCustomerButton">
                 <graphic>
                     <ImageView image="$addCustomerImage" />
                 </graphic>

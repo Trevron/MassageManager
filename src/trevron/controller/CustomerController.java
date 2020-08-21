@@ -70,6 +70,15 @@ public class CustomerController implements Initializable {
         stage.show();
     }
 
+    public void handleAddCustomerButton() throws IOException {
+        stage = (Stage) homeButton.getScene().getWindow();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/add_edit_customer.fxml"));
+        root = fxmlLoader.load();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+    }
+
     // Enable or disable customer buttons if row is selected
     public void checkSelected() {
         if (customerTableView.getSelectionModel().getSelectedItem() != null) {

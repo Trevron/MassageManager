@@ -62,7 +62,7 @@
 }
 
 #dashboard-sidebar {
-    -fx-background-color: #141E26;
+    -fx-background-color: rgba(20, 30, 38, 0.8);
 }
 
 #button-sidebar {

@@ -13,17 +13,18 @@ public class Appointment {
 
 
 
-    public Appointment(int appointmentID, int customerID, int userID, String title, String description, String contact, String type, LocalDateTime start, LocalDateTime end, int cost) {
+    public Appointment(int appointmentID, int customerID, int userID, String title, String description, int cost, String contact, String type, LocalDateTime start, LocalDateTime end) {
         this.appointmentID = appointmentID;
         this.customerID = customerID;
         this.userID = userID;
         this.title = title;
         this.description = description;
+        this.cost = cost;
         this.contact = contact;
         this.type = type;
         this.start = start;
         this.end = end;
-        this.cost = cost;
+
     }
 
     public int getAppointmentID() {

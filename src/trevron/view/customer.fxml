@@ -90,7 +90,7 @@
                 </Button>
                 <TextField fx:id="searchField" styleClass="searchField" />
             </HBox>
-            <TableView fx:id="customerTableView" minWidth="1080" minHeight="720" onMouseClicked="#checkSelected">
+            <TableView fx:id="customerTableView" minWidth="1080" minHeight="692" onMouseClicked="#checkSelected">
                 <columns>
                     <TableColumn fx:id="nameColumn" text="Name" styleClass="column" prefWidth="200"/>
                     <TableColumn fx:id="addressColumn" text="Address" styleClass="column" prefWidth="200"/>

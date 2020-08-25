@@ -31,6 +31,22 @@
         <Image fx:id="reportImage" url="@../res/clipboard.png" />
     </fx:define>
 
+    <fx:define>
+        <Image fx:id="addAppointmentImage" url="@../res/plus-square.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="deleteAppointmentImage" url="@../res/minus-square.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="editAppointmentImage" url="@../res/edit.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="searchImage" url="@../res/search-small.png" />
+    </fx:define>
+
     <left>
         <VBox id="dashboard-sidebar" spacing="10" alignment="TOP_CENTER" styleClass="leftPane" minWidth="100" maxWidth="100">
             <padding>
@@ -66,8 +82,54 @@
 
     <center>
         <VBox styleClass="dashboard-center">
-
+            <HBox alignment="CENTER_RIGHT">
+                <Button id="button-sidebar" prefWidth="28" prefHeight="28" onAction="#searchTableData">
+                    <graphic>
+                        <ImageView image="$searchImage" />
+                    </graphic>
+                </Button>
+                <TextField fx:id="searchField" styleClass="searchField" />
+            </HBox>
+            <TableView fx:id="appointmentTableView" prefWidth="1080" prefHeight="692"
+                       GridPane.columnIndex="0" GridPane.rowIndex="1" GridPane.columnSpan="8" onMouseClicked="#checkSelected">
+                <columns>
+                    <TableColumn fx:id="titleColumn" text="Title" styleClass="column" prefWidth="200"/>
+                    <TableColumn fx:id="contactColumn" text="Consultant" styleClass="column" prefWidth="100"/>
+                    <TableColumn fx:id="customerColumn" text="Customer" styleClass="column" prefWidth="100"/>
+                    <TableColumn fx:id="costColumn" text="Cost" styleClass="column" prefWidth="100"/>
+                    <TableColumn fx:id="typeColumn" text="Type" styleClass="column" prefWidth="100"/>
+                    <TableColumn fx:id="startColumn" text="Date/Time (UTC)" styleClass="column" prefWidth="200"/>
+                </columns>
+            </TableView>
         </VBox>
     </center>
+
+    <right>
+        <VBox id="dashboard-sidebar" spacing="10" alignment="TOP_CENTER" minWidth="100" maxWidth="100">
+            <padding>
+                <Insets top="10" bottom="10" right="10" left="10"/>
+            </padding>
+
+
+            <Button id="button-sidebar" prefWidth="60" prefHeight="60" onAction="#handleAddAppointmentButton">
+                <graphic>
+                    <ImageView image="$addAppointmentImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar" fx:id="deleteAppointmentButton" prefWidth="60" prefHeight="60" onAction="#deleteButtonHandler" disable="true">
+                <graphic>
+                    <ImageView image="$deleteAppointmentImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar" fx:id="editAppointmentButton" prefWidth="60" prefHeight="60" onAction="#updateButtonHandler" disable="true">
+                <graphic>
+                    <ImageView image="$editAppointmentImage" />
+                </graphic>
+            </Button>
+
+        </VBox>
+    </right>
 
 </BorderPane>

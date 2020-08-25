@@ -76,7 +76,7 @@
         <VBox styleClass="dashboard-center">
             <GridPane alignment="CENTER_LEFT" hgap="10" vgap="10" styleClass="gridPaneCenter">
 
-                <Label text="Add a Customer" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" textAlignment="CENTER" id="header"/>
+                <Label text="Update Customer" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" textAlignment="CENTER" id="header"/>
 
                 <Label text="Customer Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                 <TextField fx:id="nameField" GridPane.columnIndex="1" GridPane.rowIndex="1" styleClass="textField"/>

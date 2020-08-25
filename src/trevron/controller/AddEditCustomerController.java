@@ -50,7 +50,7 @@ public class AddEditCustomerController implements Initializable {
     // Set branch locations in combo box
     private void populateLocationsBox() {
         ObservableList<String> cityList = FXCollections.observableArrayList();
-        cityList.addAll("New York", "Phoenix", "London");
+        cityList.addAll("Seattle", "Renton", "Tacoma");
         cityField.setItems(cityList);
     }
 
@@ -163,7 +163,7 @@ public class AddEditCustomerController implements Initializable {
 
                 // return to previous screen using customerName as a reference to current window
                 stage = (Stage) nameField.getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/mainwindow.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/customer.fxml"));
                 root = fxmlLoader.load();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);

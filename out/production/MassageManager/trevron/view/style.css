@@ -113,6 +113,11 @@
     -fx-background-color: transparent;
 }
 
+.table-row-cell {
+    -fx-border-color: #68868C60;
+    -fx-table-cell-border-color: #68868C60;
+}
+
 .table-view .table-cell {
     -fx-text-fill: #BF8136;
 }

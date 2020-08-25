@@ -231,3 +231,63 @@
 .combo-box-base:disabled {
     -fx-opacity: .4;
 }
+
+/* APPOINTMENT */
+
+.date-picker {
+    -fx-text-fill: #BF8136;
+}
+
+.date-picker .combo-box {
+    -fx-background-color: #141E2660;
+}
+
+.date-picker > .text-field {
+    -fx-background-color: transparent;
+    -fx-text-fill: #BF8136;
+}
+
+.date-picker .arrow-button {
+    -fx-background-color: transparent;
+}
+
+.date-picker .arrow-button .arrow {
+    -fx-background-color: #BF8136;
+}
+
+.date-picker .arrow-button:hover .arrow {
+    -fx-background-color: #D9B97E;
+}
+
+.date-picker:focused > .text-field,
+.date-picker > .text-field:focused {
+    -fx-background-color:
+        #141E2660,
+        -fx-faint-focus-color,
+        linear-gradient(from 0px 0px to 0px 5px, derive(-fx-control-inner-background, -9%), #141E2660);
+    -fx-background-insets: 1 0 1 1, 1 0 1 1, 3 2 3 3;
+    -fx-background-radius: 2 0 0 2, 1 0 0 1, 0;
+}
+
+.date-picker-popup {
+    -fx-background-color: #141E2660;
+}
+
+.date-picker-popup > .month-year-pane {
+    -fx-background-color: #141E2660, #141E2660, #141E2660, #141E2660;
+}
+
+.date-picker .cell {
+    -fx-background-color: #243540;
+    -fx-text-fill: #BF8136;
+}
+
+.date-picker .cell:hover {
+    -fx-background-color: #D9B97E60;
+    -fx-text-fill: #BF8136;
+}
+
+.date-picker .cell:hover {
+    -fx-background-color: #D9B97E;
+    -fx-text-fill: #141E26;
+}

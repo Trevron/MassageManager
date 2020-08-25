@@ -64,7 +64,7 @@ public class AppointmentController implements Initializable {
             // Set selected appointment in State, then go to update window.
             state.setSelectedAppointment(appointmentTableView.getSelectionModel().getSelectedItem());
             stage = (Stage) homeButton.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/update_appointment.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/edit_appointment.fxml"));
             root = fxmlLoader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);

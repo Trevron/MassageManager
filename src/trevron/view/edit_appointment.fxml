@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.image.ImageView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.image.Image?>
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="trevron.controller.EditAppointmentController"
+            prefHeight="720.0" prefWidth="1280.0" stylesheets="@style.css" styleClass="dashboard-default">
+
+    <!--Define Images for sidebar icons-->
+    <fx:define>
+        <Image fx:id="homeImage" url="@../res/home.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="customerImage" url="@../res/users.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="appointmentImage" url="@../res/calendar.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="reportImage" url="@../res/clipboard.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="cancelImage" url="@../res/x-circle.png" />
+    </fx:define>
+
+    <fx:define>
+        <Image fx:id="saveImage" url="@../res/save.png" />
+    </fx:define>
+
+    <left>
+        <VBox id="dashboard-sidebar" spacing="10" alignment="TOP_CENTER" styleClass="leftPane" minWidth="100" maxWidth="100">
+            <padding>
+                <Insets top="10" bottom="10" right="10" left="10"/>
+            </padding>
+
+            <Button fx:id="homeButton" id="button-sidebar" prefWidth="60" prefHeight="60" disable="true">
+                <graphic>
+                    <ImageView image="$homeImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar" prefWidth="60" disable="true">
+                <graphic>
+                    <ImageView image="$customerImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar" prefWidth="60" prefHeight="60" disable="true">
+                <graphic>
+                    <ImageView image="$appointmentImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar" prefWidth="60" prefHeight="60" disable="true">
+                <graphic>
+                    <ImageView image="$reportImage" />
+                </graphic>
+            </Button>
+
+        </VBox>
+    </left>
+
+    <center>
+        <VBox styleClass="dashboard-center">
+            <HBox>
+
+                <GridPane alignment="CENTER_LEFT" hgap="10" vgap="10" styleClass="gridPaneCenter">
+
+                    <Label text="Add Appointment" GridPane.columnIndex="0" GridPane.rowIndex="0" GridPane.columnSpan="2" textAlignment="CENTER" id="header"/>
+
+
+
+                    <Label text="Customer:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                    <Label fx:id="customerLabel" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+
+                    <Label text="Title:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                    <TextField fx:id="titleField" GridPane.columnIndex="1" GridPane.rowIndex="2" styleClass="textField"/>
+
+                    <Label text="Description:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                    <TextField fx:id="descriptionField" GridPane.columnIndex="1" GridPane.rowIndex="3" styleClass="textField"/>
+
+                    <Label text="Cost:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                    <TextField fx:id="costField" GridPane.columnIndex="1" GridPane.rowIndex="4" styleClass="textField"/>
+
+                    <Label text="Consultant:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                    <ComboBox fx:id="consultantBox" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+
+                    <Label text="Type:" GridPane.columnIndex="0" GridPane.rowIndex="6"/>
+                    <ComboBox fx:id="typeField" GridPane.columnIndex="1" GridPane.rowIndex="6"/>
+
+                    <Label text="Start Date:" GridPane.columnIndex="0" GridPane.rowIndex="7"/>
+                    <DatePicker fx:id="startField" GridPane.columnIndex="1" GridPane.rowIndex="7" editable="false"/>
+
+
+                    <Label text="Start Time:" GridPane.columnIndex="0" GridPane.rowIndex="8"/>
+                    <HBox GridPane.columnIndex="1" GridPane.rowIndex="8">
+                        <ComboBox fx:id="startHourBox"/>
+                        <Label text=" : "/>
+                        <ComboBox fx:id="startMinuteBox"/>
+                    </HBox>
+                </GridPane>
+
+                <TableView fx:id="customerTableView"
+                           prefWidth="400" prefHeight="100"  onMouseClicked="#handleCustomerLabel">
+                    <columns>
+                        <TableColumn fx:id="col_customerID" text="ID" styleClass="column" prefWidth="100"/>
+                        <TableColumn fx:id="col_name" text="Name" styleClass="column" prefWidth="300"/>
+                    </columns>
+                </TableView>
+
+            </HBox>
+        </VBox>
+    </center>
+
+    <right>
+        <VBox id="dashboard-sidebar" spacing="10" alignment="TOP_CENTER" minWidth="100" maxWidth="100">
+            <padding>
+                <Insets top="10" bottom="10" right="10" left="10"/>
+            </padding>
+
+            <Button id="button-sidebar" prefWidth="60" prefHeight="60" onAction="#handleSubmitButton">
+                <graphic>
+                    <ImageView image="$saveImage" />
+                </graphic>
+            </Button>
+
+            <Button id="button-sidebar" prefWidth="60" prefHeight="60" onAction="#handleCancelButton">
+                <graphic>
+                    <ImageView image="$cancelImage" />
+                </graphic>
+            </Button>
+
+        </VBox>
+    </right>
+
+</BorderPane>

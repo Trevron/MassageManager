@@ -83,7 +83,7 @@
     <center>
         <VBox styleClass="dashboard-center" >
             <HBox alignment="CENTER_RIGHT">
-                <Button id="button-sidebar" prefWidth="28" prefHeight="28">
+                <Button id="button-sidebar" prefWidth="28" prefHeight="28" onAction="#searchTableData">
                     <graphic>
                         <ImageView image="$searchImage" />
                     </graphic>

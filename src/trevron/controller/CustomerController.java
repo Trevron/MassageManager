@@ -7,10 +7,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import trevron.model.Customer;
@@ -37,6 +34,7 @@ public class CustomerController implements Initializable {
     @FXML Button deleteCustomerButton;
     @FXML Button editCustomerButton;
     @FXML Button homeButton;
+    @FXML TextField searchField;
     State state = State.getInstance();
     Stage stage;
     Parent root;
@@ -72,7 +70,7 @@ public class CustomerController implements Initializable {
 
     public void handleAddCustomerButton() throws IOException {
         stage = (Stage) homeButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/add_edit_customer.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/add_customer.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -100,7 +98,7 @@ public class CustomerController implements Initializable {
 
             // Switch to update customer screen.
             stage = (Stage) homeButton.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/updatecustomerwindow.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/edit_customer.fxml"));
             root = fxmlLoader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -158,6 +156,32 @@ public class CustomerController implements Initializable {
                     "\tFROM customer a JOIN address b on a.addressId = b.addressId\n" +
                     "\tJOIN city c on b.cityId = c.cityId\n" +
                     "\tJOIN country d on c.countryId = d.countryId";
+            Query.executeQuery(sqlCustomers);
+            ResultSet result = Query.getResult();
+            while(result.next()) {
+                customerList.add(new Customer(result.getString("a.customerId"), result.getString("a.customerName"),
+                        result.getString("a.addressId"), result.getString("b.address"), result.getString("b.address2"),
+                        result.getString("b.postalCode"), result.getString("b.phone"), result.getString("c.city"),
+                        result.getString("b.cityId"), result.getString("d.country"), result.getString("c.countryId")));
+            }
+        } catch(SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        customerTableView.setItems(customerList);
+    }
+
+    // Reload table data from database
+    public void searchTableData() {
+        // Initialize customer list array
+        customerList.clear();
+        customerTableView.refresh();
+
+        // Get customer table from database and then bind to tableview
+        try{
+            String sqlCustomers = "SELECT a.customerId, a.customerName, a.addressId, b.address, b.address2, b.postalCode, b.phone, b.cityId, c.city, c.countryId, d.country \n" +
+                    "\tFROM customer a JOIN address b on a.addressId = b.addressId\n" +
+                    "\tJOIN city c on b.cityId = c.cityId\n" +
+                    "\tJOIN country d on c.countryId = d.countryId WHERE a.customerName LIKE '%" + searchField.getText() + "%'";
             Query.executeQuery(sqlCustomers);
             ResultSet result = Query.getResult();
             while(result.next()) {

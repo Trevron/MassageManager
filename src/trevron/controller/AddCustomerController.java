@@ -22,10 +22,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class AddEditCustomerController implements Initializable {
+public class AddCustomerController implements Initializable {
 
-    @FXML
-    private TextField nameField;
+    @FXML private TextField nameField;
     @FXML private TextField addressField;
     @FXML private TextField address2Field;
     @FXML private ComboBox<String> cityField;

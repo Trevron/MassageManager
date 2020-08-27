@@ -45,9 +45,6 @@ public class LoginController implements Initializable {
     Stage stage;
     Parent root;
     State state = State.getInstance();
-    PrintWriter out;
-    DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-    LocalDateTime actualDate;
 
     // Use SQL statement to verify login credentials
     public void handleLoginButton() {
@@ -68,18 +65,12 @@ public class LoginController implements Initializable {
                 }
             }
             // If there is a user/password match, set currentUser in State
-            // set date and time to now and then write date and user to logfile.txt
             // checkForAppointment before switching scenes.
             // Use handleSceneChange() to go to next screen
             if (auth == true) {
                 System.out.println("Login successful!");
                 loginUsername.clear();
                 loginPassword.clear();
-                actualDate = LocalDateTime.now();
-                // Log user and date in log file
-                out.write(actualDate + " - " + user +"\n");
-                out.flush();
-                out.close();
                 checkForAppointment();
                 handleSceneChange();
             } else {
@@ -146,13 +137,6 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        // Create new file writer to output a log file when users log in
-        try{
-            out = new PrintWriter(new FileWriter("logfile.txt", true));
-
-        } catch (IOException ex) {
-            System.out.println("IOException with the log file!");
-        }
         loginButton.setDisable(true);
     }
 }

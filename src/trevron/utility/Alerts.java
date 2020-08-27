@@ -35,9 +35,6 @@ public class Alerts {
     private static final Alert invalidDate = new Alert(Alert.AlertType.ERROR);
     private static final Alert unhandledException = new Alert(Alert.AlertType.ERROR);
 
-
-
-
     public static Alert getAlert(String alertType) {
         switch(alertType) {
             case "invalidLogin":

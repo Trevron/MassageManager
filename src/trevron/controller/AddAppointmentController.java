@@ -1,5 +1,7 @@
 package trevron.controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -311,6 +313,7 @@ public class AddAppointmentController implements Initializable {
     }
 
 
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         populateTimes();
@@ -326,5 +329,15 @@ public class AddAppointmentController implements Initializable {
         startField.setValue(LocalDate.now());
         customerTableView.getSelectionModel().select(0);
         handleCustomerLabel();
+
+        // force the cost field to be numeric only
+        costField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    costField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
     }
 }

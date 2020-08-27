@@ -1,5 +1,7 @@
 package trevron.controller;
 
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
@@ -136,7 +138,7 @@ public class EditAppointmentController implements Initializable {
     // Set types in type combo box
     private void populateTypeBox() {
         ObservableList<String> typeList = FXCollections.observableArrayList();
-        typeList.addAll("Consultation", "Presentation", "Stand-Up", "Stand-Down");
+        typeList.addAll("Swedish Massage", "Hot Stone Massage", "Shiatsu Massage", "Deep Tissue", "Sports Massage");
         typeField.setItems(typeList);
     }
 
@@ -348,5 +350,16 @@ public class EditAppointmentController implements Initializable {
         col_name.setCellValueFactory(new PropertyValueFactory<>("name"));
         Callback<DatePicker, DateCell> dayCellFactory = this.disableDates();
         startField.setDayCellFactory(dayCellFactory);
+
+        // force the cost field to be numeric only
+        costField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (!newValue.matches("\\d*")) {
+                    costField.setText(newValue.replaceAll("[^\\d]", ""));
+                }
+            }
+        });
+        
     }
 }

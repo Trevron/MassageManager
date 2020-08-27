@@ -14,9 +14,13 @@ import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
 import trevron.model.Bill;
+import trevron.utility.BillFormatter;
 import trevron.utility.Query;
 import trevron.utility.State;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
@@ -83,7 +87,15 @@ public class ReportController implements Initializable {
         }
     }
 
-    public void handlePrintButton() {
+    public void handlePrintButton() throws IOException {
+        Bill selectedBill = billTableView.getSelectionModel().getSelectedItem();
+        File myFile = new File("billPrinter.txt");
+        myFile.createNewFile();
+        BufferedWriter output = new BufferedWriter(new FileWriter(myFile));
+        output.write(BillFormatter.format(selectedBill.getCustomerName(), selectedBill.getCost(), selectedBill.getAppointmentNumber(), selectedBill.getMonth()));
+        output.close();
+        ProcessBuilder pb = new ProcessBuilder("Notepad.exe", "billPrinter.txt");
+        pb.start();
 
     }
 

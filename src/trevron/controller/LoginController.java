@@ -35,8 +35,7 @@ public class LoginController implements Initializable {
     private Button loginButton;
     @FXML private TextField loginUsername;
     @FXML private PasswordField loginPassword;
-    @FXML private Label userLabel;
-    @FXML private Label passwordLabel;
+
 
     boolean disableButton;
     String sqlStatement;

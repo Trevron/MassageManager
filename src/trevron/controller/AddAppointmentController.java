@@ -18,10 +18,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.DayOfWeek;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 import java.util.ResourceBundle;
 
@@ -48,9 +45,7 @@ public class AddAppointmentController implements Initializable {
     String customerID, userID, title, description, cost, contact, type;
 
     // Formatter for date cell picker.
-    // Lambda expression is used to override default date cell.
-    // The use of a lambda expression here allows me to create a new dayCellFactory without having to create a separate class.
-    // Allows for the ability to disable certain dates based off of boolean checks.
+    // Disable certain dates based off of boolean checks.
     private Callback<DatePicker, DateCell> disableDates() {
         final Callback<DatePicker, DateCell> dayCellFactory = (final DatePicker datePicker) -> new DateCell() {
             @Override
@@ -212,7 +207,8 @@ public class AddAppointmentController implements Initializable {
         // Check for overlapping appointments with selected user.
         String sql = "SELECT * FROM appointment where userID = " + userID;
         LocalDateTime apptStart, apptEnd;
-        LocalDateTime attemptedStart = start.toLocalDateTime();
+
+        LocalDateTime attemptedStart = TimeConverter.getLocal(start);
         Query.executeQuery(sql);
         result = Query.getResult();
         try {
@@ -227,6 +223,7 @@ public class AddAppointmentController implements Initializable {
             }
         } catch (SQLException ex) {
             System.out.println("Error: " + ex.getMessage());
+
         }
 
         // Check for overlapping appointments with selected customer.
@@ -273,11 +270,6 @@ public class AddAppointmentController implements Initializable {
                 overlappingAppointments();
 
                 // Check for input validation with a lambda!
-                // The use of lambda is more efficient here because it allows me to check inputs, show alerts
-                // and then provide a boolean in a separate statement based on how the checks went. I do
-                // not need to create a separate boolean method for each controller I need input validation in.
-                // The Validation interface can be reused wherever I need and I can check each variable's value directly
-                // after it has been declared.
                 Validation check = () -> {
                     Boolean isValid = false;
                     if(title.equals("") || title.length() > 255) {

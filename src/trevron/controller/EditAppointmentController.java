@@ -54,9 +54,6 @@ public class EditAppointmentController implements Initializable {
 
 
     // Formatter for date cell picker
-    // This lambda is more efficient because it allows an entire function to be passed as an argument.
-    // Without the use of the lambda, we would need to create a larger method that had multiple layers of nesting.
-    // That would result in many more lines of code. In this case, we pass some of the nesting in as a function.
     private Callback<DatePicker, DateCell> disableDates() {
         final Callback<DatePicker, DateCell> dayCellFactory = (final DatePicker datePicker) -> new DateCell() {
             @Override
@@ -223,7 +220,7 @@ public class EditAppointmentController implements Initializable {
         String sql = "SELECT * FROM appointment where userID = " + userID;
         LocalDateTime currentStart = selectedAppointment.getStart();
         LocalDateTime apptStart, apptEnd;
-        LocalDateTime attemptedStart = start.toLocalDateTime();
+        LocalDateTime attemptedStart = TimeConverter.getLocal(start);
         Query.executeQuery(sql);
         result = Query.getResult();
         try {
@@ -262,8 +259,6 @@ public class EditAppointmentController implements Initializable {
 
     public void handleSubmitButton() throws IOException {
         // Lambda for checking if time is valid prior to setting date and time.
-        // The lambda is more efficient here because it is a one time use validation check so
-        // it would not make sense to create a method. Utilizes the Validation interface.
         Validation timeCheck = () -> {
             if(startHourBox.getSelectionModel().isEmpty()) {
                 Alerts.getAlert("invalidTime").show();
@@ -281,11 +276,6 @@ public class EditAppointmentController implements Initializable {
 
                 if (!appointmentOverlap()) {
                     // Check for input validation with a lambda!
-                    // The use of lambda is more efficient here because it allows me to check inputs, show alerts
-                    // and then provide a boolean in a separate statement based on how the checks went. I do
-                    // not need to create a separate boolean method for each controller I need input validation in.
-                    // The Validation interface can be reused wherever I need and I can check each variable's value directly
-                    // after it has been declared.
                     Validation check = () -> {
                         Boolean isValid = false;
                         if (title.equals("") || title.length() > 255) {

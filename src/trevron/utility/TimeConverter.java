@@ -45,4 +45,11 @@ public class TimeConverter {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return dateFormat.format(zdt);
     }
+
+    public static LocalDateTime getLocal(ZonedDateTime zdt) {
+        ZonedDateTime pst = zdt.withZoneSameInstant(ZoneId.systemDefault());
+
+        return pst.toLocalDateTime();
+    }
+
 }

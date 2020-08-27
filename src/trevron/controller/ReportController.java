@@ -1,22 +1,91 @@
 package trevron.controller;
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Stage;
+import trevron.model.Bill;
+import trevron.utility.Query;
 import trevron.utility.State;
 
 import java.io.IOException;
+import java.net.URL;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ResourceBundle;
 
-public class ReportController {
-
-    @FXML
-    Button homeButton;
+public class ReportController implements Initializable {
+    @FXML TableView<Bill> billTableView;
+    @FXML TableColumn<Bill, String> customerColumn;
+    @FXML TableColumn<Bill, String> costColumn;
+    @FXML TableColumn<Bill, String> appointmentColumn;
+    @FXML TableColumn<Bill, String> dateColumn;
+    @FXML TextField searchField;
+    @FXML Button printButton;
+    @FXML Button homeButton;
     State state = State.getInstance();
     Stage stage;
     Parent root;
+
+    ObservableList<Bill> billList = FXCollections.observableArrayList();
+
+    private void updateTableData() {
+        billList.clear();
+        String sql = "SELECT c.customerName, SUM(a.cost) AS totalCost, COUNT(a.appointmentId) AS totalAppointments, start "
+                + "FROM customer AS c JOIN appointment AS a ON c.customerId = a.customerId GROUP BY c.customerName, Month(start)";
+
+        Query.executeQuery(sql);
+        ResultSet result = Query.getResult();
+        try {
+            while(result.next()) {
+                billList.add(new Bill (result.getString("c.customerName"), result.getTimestamp("a.start").toLocalDateTime(),
+                         result.getInt("totalCost"), result.getInt("totalAppointments")));
+            }
+        } catch(SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        billTableView.setItems(billList);
+    }
+
+    public void searchTableData() {
+        billList.clear();
+        String sql = "SELECT c.customerName, SUM(a.cost) AS totalCost, COUNT(a.appointmentId) AS totalAppointments, start "
+                + "FROM customer AS c JOIN appointment AS a ON c.customerId = a.customerId where c.customerName LIKE '%"
+                + searchField.getText() +"%' GROUP BY c.customerName, Month(start)";
+
+        Query.executeQuery(sql);
+        ResultSet result = Query.getResult();
+        try {
+            while(result.next()) {
+                billList.add(new Bill (result.getString("c.customerName"), result.getTimestamp("a.start").toLocalDateTime(),
+                        result.getInt("totalCost"), result.getInt("totalAppointments")));
+            }
+        } catch(SQLException ex) {
+            System.out.println("Error: " + ex.getMessage());
+        }
+        billTableView.setItems(billList);
+    }
+
+    public void checkSelected() {
+        if (billTableView.getSelectionModel().getSelectedItem() != null) {
+            printButton.setDisable(false);
+        } else {
+            printButton.setDisable(true);
+        }
+    }
+
+    public void handlePrintButton() {
+
+    }
 
     public void handleCustomerButton() throws IOException {
         stage = (Stage) homeButton.getScene().getWindow();
@@ -43,5 +112,16 @@ public class ReportController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        // Initialize table columns
+        customerColumn.setCellValueFactory(new PropertyValueFactory<>("customerName"));
+        costColumn.setCellValueFactory(new PropertyValueFactory<>("cost"));
+        appointmentColumn.setCellValueFactory(new PropertyValueFactory<>("appointmentNumber"));
+        dateColumn.setCellValueFactory(new PropertyValueFactory<>("month"));
+
+        updateTableData();
     }
 }

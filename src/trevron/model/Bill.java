@@ -6,12 +6,13 @@ public class Bill {
     String customerName;
     String month;
     LocalDateTime date;
-    int cost;
+    int cost, appointmentNumber;
 
-    public Bill(String customerName, LocalDateTime date, int cost) {
+    public Bill(String customerName, LocalDateTime date, int cost, int appointmentNumber) {
         this.customerName = customerName;
         this.date = date;
         this.cost = cost;
+        this.appointmentNumber = appointmentNumber;
         month = date.getMonth().toString();
     }
 
@@ -45,5 +46,13 @@ public class Bill {
 
     public void setCost(int cost) {
         this.cost = cost;
+    }
+
+    public int getAppointmentNumber() {
+        return appointmentNumber;
+    }
+
+    public void setAppointmentNumber(int appointmentNumber) {
+        this.appointmentNumber = appointmentNumber;
     }
 }

@@ -360,6 +360,6 @@ public class EditAppointmentController implements Initializable {
                 }
             }
         });
-        
+
     }
 }

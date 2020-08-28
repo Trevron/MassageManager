@@ -36,18 +36,13 @@ public class TimeConverter {
         return locZDT;
     }
 
-    public static String format(LocalDateTime ldt) {
-        DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-        return dateFormat.format(ldt);
-    }
-
     public static String format(ZonedDateTime zdt) {
         DateTimeFormatter dateFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return dateFormat.format(zdt);
     }
 
     public static LocalDateTime getLocal(ZonedDateTime zdt) {
-        ZonedDateTime pst = zdt.withZoneSameInstant(ZoneId.systemDefault());
+        ZonedDateTime pst = zdt.withZoneSameInstant(ZoneOffset.systemDefault());
 
         return pst.toLocalDateTime();
     }

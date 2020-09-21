@@ -98,7 +98,7 @@
                     <TableColumn fx:id="customerColumn" text="Customer" styleClass="column" prefWidth="100"/>
                     <TableColumn fx:id="costColumn" text="Cost" styleClass="column" prefWidth="100"/>
                     <TableColumn fx:id="typeColumn" text="Type" styleClass="column" prefWidth="100"/>
-                    <TableColumn fx:id="startColumn" text="Date/Time (UTC)" styleClass="column" prefWidth="200"/>
+                    <TableColumn fx:id="startColumn" text="Date/Time" styleClass="column" prefWidth="200"/>
                 </columns>
             </TableView>
         </VBox>

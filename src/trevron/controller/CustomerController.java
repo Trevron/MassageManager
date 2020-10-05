@@ -43,7 +43,7 @@ public class CustomerController implements Initializable {
 
     public void handleHomeButton() throws IOException {
         stage = (Stage) homeButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/dashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/dashboard.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -52,7 +52,7 @@ public class CustomerController implements Initializable {
 
     public void handleReportButton() throws IOException {
         stage = (Stage) homeButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/report.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/report.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -61,7 +61,7 @@ public class CustomerController implements Initializable {
 
     public void handleAppointmentButton() throws IOException {
         stage = (Stage) homeButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/appointment.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/appointment.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -70,7 +70,7 @@ public class CustomerController implements Initializable {
 
     public void handleAddCustomerButton() throws IOException {
         stage = (Stage) homeButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/add_customer.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/add_customer.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -98,7 +98,7 @@ public class CustomerController implements Initializable {
 
             // Switch to update customer screen.
             stage = (Stage) homeButton.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/edit_customer.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/edit_customer.fxml"));
             root = fxmlLoader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);

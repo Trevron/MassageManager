@@ -4,10 +4,10 @@
 
 INVOICE
 
-Customer : John Stamos
-Month : SEPTEMBER
-Total number of appointments : 2
-Total cost : $112222
+Customer : Jerry Garcia
+Month : OCTOBER
+Total number of appointments : 1
+Total cost : $555
 
 
 ---------------------------------------------------------------------------------------

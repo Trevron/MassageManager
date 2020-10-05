@@ -94,7 +94,7 @@ public class LoginController implements Initializable {
     // Switch to next screen
     private void handleSceneChange() throws IOException {
         stage = (Stage) loginButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/dashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/dashboard.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);

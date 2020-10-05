@@ -74,7 +74,7 @@ public class EditCustomerController implements Initializable {
         if(Alerts.getAlert("confirmCancel").getResult() == ButtonType.OK) {
             // return to previous screen using customerName as a reference to current window
             stage = (Stage) nameField.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/customer.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/customer.fxml"));
             root = fxmlLoader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -138,7 +138,7 @@ public class EditCustomerController implements Initializable {
 
                 // return to previous screen using customerName as a reference to current window
                 stage = (Stage) nameField.getScene().getWindow();
-                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/customer.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/customer.fxml"));
                 root = fxmlLoader.load();
                 Scene scene = new Scene(root);
                 stage.setScene(scene);

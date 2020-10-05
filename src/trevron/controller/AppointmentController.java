@@ -64,7 +64,7 @@ public class AppointmentController implements Initializable {
             // Set selected appointment in State, then go to update window.
             state.setSelectedAppointment(appointmentTableView.getSelectionModel().getSelectedItem());
             stage = (Stage) homeButton.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/edit_appointment.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/edit_appointment.fxml"));
             root = fxmlLoader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -138,7 +138,7 @@ public class AppointmentController implements Initializable {
 
     public void handleAddAppointmentButton() throws IOException {
         stage = (Stage) homeButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/add_appointment.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/add_appointment.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -147,7 +147,7 @@ public class AppointmentController implements Initializable {
 
     public void handleCustomerButton() throws IOException {
         stage = (Stage) homeButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/customer.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/customer.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -156,7 +156,7 @@ public class AppointmentController implements Initializable {
 
     public void handleHomeButton() throws IOException {
         stage = (Stage) homeButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/dashboard.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/dashboard.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -165,7 +165,7 @@ public class AppointmentController implements Initializable {
 
     public void handleReportButton() throws IOException {
         stage = (Stage) homeButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/report.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/report.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);

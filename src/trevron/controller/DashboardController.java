@@ -19,7 +19,7 @@ public class DashboardController {
 
     public void handleCustomerButton() throws IOException {
         stage = (Stage) homeButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/customer.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/customer.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -28,7 +28,7 @@ public class DashboardController {
 
     public void handleReportButton() throws IOException {
         stage = (Stage) homeButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/report.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/report.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -37,7 +37,7 @@ public class DashboardController {
 
     public void handleAppointmentButton() throws IOException {
         stage = (Stage) homeButton.getScene().getWindow();
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/appointment.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/appointment.fxml"));
         root = fxmlLoader.load();
         Scene scene = new Scene(root);
         stage.setScene(scene);

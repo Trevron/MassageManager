@@ -166,7 +166,7 @@ public class AddAppointmentController implements Initializable {
         if(Alerts.getAlert("confirmCancel").getResult() == ButtonType.OK) {
             // return to previous screen using titlefield as a reference to current window
             stage = (Stage) titleField.getScene().getWindow();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/appointment.fxml"));
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/appointment.fxml"));
             root = fxmlLoader.load();
             Scene scene = new Scene(root);
             stage.setScene(scene);
@@ -287,7 +287,7 @@ public class AddAppointmentController implements Initializable {
                     addAppointment();
                     // Return to main window
                     stage = (Stage) titleField.getScene().getWindow();
-                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("../view/appointment.fxml"));
+                    FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/trevron/view/appointment.fxml"));
                     root = fxmlLoader.load();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
